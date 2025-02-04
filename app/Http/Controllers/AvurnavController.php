@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class AvurnavController extends Controller
 {
+    public function index()
+    {
+        $avurnavs = Avurnav::all();
+        return view('avurnav.index', compact('avurnavs'));
+    }
+
+
     public function create()
     {
         return view('avurnav.create');
@@ -31,6 +38,9 @@ class AvurnavController extends Controller
         // Enregistrement dans la base de données
         Avurnav::create($validatedData);
 
-        return redirect()->back()->with('success', 'Données enregistrées avec succès.');
+        return redirect('/avurnav/index')->with('success', 'Données enregistrées avec succès.');
     }
+
+   
 }
+
